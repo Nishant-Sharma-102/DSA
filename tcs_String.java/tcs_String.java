@@ -141,10 +141,131 @@ public static String Capsendorsi(String str, int size){
     }
     return sb.toString();
 }
+   public static void frequency(String str){
+    int [] freq = new int[26];
+    for(int i= 0; i<str.length(); i++){
+        freq[str.charAt(i)-'a']++;
+    }
+    for(int i=0; i<26; i++){
+        if (freq[i]!=0) 
+            System.out.print((char)(i+'a'));
+            System.out.print(freq[i]+" ");
+            
+        }
+    }
+   public static void nonrepeat(String str, int size){
+    int freq[] = new int[200];
+    char  s[] = str.toCharArray();
+    for(int i = 0; i<size; i++){
+        if (str.charAt(i)==' ') 
+            continue;
+            
+        else{
+            freq[(int)str.charAt(i)]++;
+        }
+            
+        
+    }
+    for(int i= 0; i<size; i++){
+        if (freq[(int)str.charAt(i)]==1 && s[i]!=' ') {
+    System.out.print(s[i]+" ");
+            
+        }
+    }
+   }
+ public static String sortString(String str1){
+    char[] ch = str1.toCharArray();
+    Arrays.toString(ch);
+    return new String(ch);
+ }
+ public static boolean ingram(String str1,String str2){
+    if (str1.length()!=str2.length()) {
+        return false;
+        
+    }
+    str1 = sortString(str1);
+    str2  = sortString(str2);
+    for(int i=0; i<str1.length(); i++){
+        if (str1.charAt(i)!=str2.charAt(i)) {
+            return false;
+            
+        }
+    }
+    return true;
+ }
+ public static void occuring(String str){
+    str = sortString(str);
+ int count = 0;
+ for(int i =0; i<str.length()-1;i++){
+    if (str.charAt(i)==str.charAt(i+1)) {
+        count++;
+        
+    }
+    
+ }
+ if (count>1) {
+    System.out.println(count);
+    
+}
+ }
+ //ANOTHER METHOD TO SORT THE STRING
+ public static String sortStirngg(String str){
+    char [] st = str.toCharArray();
+    for(int i =0;  i<st.length-1; i++){
+        for(int j=0; j<st.length-1-i; j++){
+            if (st[j]>st[j+1]) {
+                char temp = st[j];
+                st[j]=st[j+1];
+                st[j+1] = temp;
+                
+            }
+
+        }
+
+    }
+    return new String(st);
+ }
+ public static void occuringg(String str){
+    int count[]  = new int[256];
+    int max = 0;
+    for(char ch:str.toCharArray()){
+        count[ch]++;
+
+    }
+    for(int i=0; i<256; i++){
+        if (count[i]>0) {
+            System.out.print((char)i+ " ==appears.="+count[i]);
+            System.out.println();
+            
+        }
+    }
+   
+ }
+ public static String removeduplicate(String str){
+    char [] st = str.toCharArray();
+    Arrays.sort(st);
+    for(int i=0; i<st.length-1; i++){
+        if (st[i]==st[i+1]) {
+            continue;
+            
+        }
+
+    }
+    return st.toString();
+ }
+
+
     public static void main(String[] args) {
-   String str = "Nishant Sharma";
-   int size= str.length();
-    System.out.println(Capsendorsi(str, size));
+   String str = "apple";
+   System.out.print(removeduplicate(str));
+    //occuringg(str);
+   //System.out.println(sortStirngg(str));
+//    occuring(str);
+//    String str2 = "TEGERNI";
+//     System.out.println(ingram(str1, str2));
+//    int size= str.length();
+//    nonrepeat(str, size);
+//System.out.println(Capsendorsi(str, size));
    //System.out.println(addnumber(str));
    //System.out.println(removeBrackets(str));
 //    int i=0;
