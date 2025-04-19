@@ -236,7 +236,7 @@ public class tcs_String {
 
     public static void occuringg(String str) {
         int count[] = new int[256];
-        int max = 0;
+       
         for (char ch : str.toCharArray()) {
             count[ch]++;
 
@@ -245,10 +245,9 @@ public class tcs_String {
             if (count[i] > 0) {
                 System.out.print((char) i + " ==appears.=" + count[i]);
                 System.out.println();
-
+                
             }
         }
-
     }
 
     public static String removeduplicate(String str) {
@@ -304,29 +303,74 @@ public class tcs_String {
         return sb.toString();
     }
 
-    public static String lexicographic(String str){
+    public static String lexicographic(String str) {
         StringBuffer ans = new StringBuffer();
-        for(int i=0; i<str.length(); i++){
-            int ascii =(int)str.charAt(i);
-            if (ascii==90) {
-                ans.insert(i, (char)(65));
-                
-            }else if (ascii==122) {
-                ans.insert(i, (char)(97));
-            }
-            else if (ascii>=65 && ascii<90 || ascii>=97 && ascii<122) {
-                ans.insert(i,(char)(ascii+1));
-                
-            }
+        for (int i = 0; i < str.length(); i++) {
+            int ascii = (int) str.charAt(i);
+            if (ascii == 90) {
+                ans.insert(i, (char) (65));
 
+            } else if (ascii == 122) {
+                ans.insert(i, (char) (97));
+            } else if (ascii >= 65 && ascii < 90 || ascii >= 97 && ascii < 122) {
+                ans.insert(i, (char) (ascii + 1));
+
+            }
 
         }
         return ans.toString();
     }
-    public static void main(String[] args) {
-       String str = "java";
 
-    System.out.println(lexicographic(str));
+    public static void longestword(String str) {
+        String word = " ";
+        String len = " ";
+       
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch != ' ') {
+                word += ch;
+
+            } else if (word.length() > len.length()){
+                    len = word;
+                    word = " ";
+
+            }
+        }
+        System.out.println(len);
+    }
+
+    
+public static String sort(String str){
+    char [] st = str.toCharArray();
+    for(int i=0; i<st.length-1; i++){
+        for(int j=0; j<st.length-1-i; j++){
+            if (st[j]>st[j+1]) {
+                char temp = st[j];
+                st[j] = st[j+1];
+                st[j+1] = temp;
+                
+            }
+        }
+    }
+    return new String(st);
+}
+public static int countnumberofword(String str){
+    int count =1;
+    for(int i =0; i<str.length(); i++){
+        if (str.charAt(i)==' ') {
+            count++;
+            
+        }
+    }
+    return count;
+}
+    public static void main(String[] args) {
+        String str = "hi amy and jay";
+        System.out.println(occuringg(str));
+        //System.out.println(countnumberofword(str));
+       // System.out.println(sort(str));
+       // longestword(str);
+        // System.out.println(lexicographic(str));
         // System.out.println();
         // // printallduplicates(str);
         // System.out.println(removecharformstrtwo(str1, str2));
