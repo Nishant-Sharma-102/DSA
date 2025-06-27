@@ -102,9 +102,20 @@ public static int friendsInPair(int n){
        }
     return friendsInPair(n-1)+(n-1)*friendsInPair(n-2);
 }
+public static void binaryInString(int n, int lastPlace, String str){
+    if (n==0) {
+        System.out.println(str);
+        return;
+    }
+    binaryInString(n-1, 0, str+"0");
+    if (lastPlace==0) {
+        binaryInString(n-1, 1, str+"1");
+    }
+}
     public static void main(String[] args) {
         int n = 3;
-        System.out.println(friendsInPair(3));
+        binaryInString(n, 0, " ");
+       // System.out.println(friendsInPair(3));
         //   String str = "appnaacollege";
         // removeDuplicate(str, 0, new StringBuilder(" "), new boolean[26]);
         // int x = 2;
